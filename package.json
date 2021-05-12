@@ -1,14 +1,12 @@
 {
-  "name": "@ffwd/root",
+  "name": "ffwd",
+  "root": true,
   "private": true,
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "test": "NODE_ENV=test jest --silent=false --runInBand"
   },
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "@types/jest": "^26.0.23",
     "@types/node": "^15.0.2",

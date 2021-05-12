@@ -18,6 +18,7 @@ export function getConfig() {
         });
     }
     catch (err) {
+        console.log(err);
         console.error(`Error parsing ${FILE_NAME}. Please make sure it's properly formatted JSON.`);
         process.exit(1);
     }

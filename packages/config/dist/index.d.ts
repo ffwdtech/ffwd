@@ -3,6 +3,7 @@ export declare let configLocation: string;
 export declare function getConfig(): {
     dataDir: string;
     bigIntMode?: "string" | "number" | "bigint" | undefined;
+    pgConfig: any;
 } & {
     location: string;
 };

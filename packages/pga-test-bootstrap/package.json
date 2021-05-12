@@ -1,8 +1,9 @@
 {
-  "name": "@ffwd/db-util",
+  "name": "@ffwd/pga-test-bootstrap",
   "version": "1.0.0",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "bin": {
+    "pga-test-bootstrap": "./dist/index.js"
+  },
   "directories": {
     "dist": "dist"
   },
@@ -11,9 +12,10 @@
     "rebuild": "rm -rf dist && tsc"
   },
   "dependencies": {
-    "@ffwd/db": "workspace:*",
-    "@ffwd/util": "workspace:*",
-    "find-up": "^5.0.0"
+    "@ffwd/config": "workspace:*",
+    "@ffwd/db-util": "workspace:*",
+    "dotenv": "^9.0.2",
+    "esm": "^3.2.25"
   },
   "devDependencies": {
   }

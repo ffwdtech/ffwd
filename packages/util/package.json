@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
-    "build": "rm -rf dist && tsc"
+    "rebuild": "rm -rf dist && tsc"
   },
   "devDependencies": {
   }

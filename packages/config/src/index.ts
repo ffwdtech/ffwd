@@ -21,12 +21,14 @@ export function getConfig() {
     const config: {
       dataDir: string;
       bigIntMode?: 'number' | 'string' | 'bigint';
+      pgConfig: any;
     } = JSON.parse(fs.readFileSync(configLocation as string, 'utf-8'));
 
     return Object.assign(config, {
       location: configLocation,
     });
   } catch (err) {
+    console.log(err);
     console.error(
       `Error parsing ${FILE_NAME}. Please make sure it's properly formatted JSON.`,
     );

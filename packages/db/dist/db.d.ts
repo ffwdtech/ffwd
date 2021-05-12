@@ -7,12 +7,6 @@ declare const query: {
 export declare type UUID = string;
 export declare type ID = UUID;
 /**
- * Query the database and return one result.
- * @param {SQLQuery} query - SQL query to use
- * @returns {Promise<any>} Result
- */
-export declare function queryOne(query: SQLQuery): Promise<any | undefined>;
-/**
  * Check if a table exists in the database
  * @param {string} table - Name of table
  * @returns {boolean}

@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 import { dropCmd } from './commands/drop';
 import { initCmd } from './commands/init';
 import { listCmd } from './commands/list';
