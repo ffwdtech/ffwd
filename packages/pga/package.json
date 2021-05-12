@@ -1,8 +1,8 @@
 {
   "name": "@ffwd/pga",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "bin": {
-    "pga": "./dist/index.js"
+    "pga": "./dist/pga.js"
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
