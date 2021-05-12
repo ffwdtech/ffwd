@@ -1,6 +1,6 @@
 {
   "name": "@ffwd/db",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "directories": {
@@ -13,7 +13,6 @@
   "dependencies": {
     "@databases/pg": "^5.0.0",
     "@ffwd/config": "workspace:*",
-    "@ffwd/util": "workspace:*",
-    "pg": "^8.6.0"
+    "@ffwd/util": "workspace:*"
   }
 }
