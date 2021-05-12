@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "allowJs": false,
+    "lib": ["DOM", "ES2020"],
+    "target": "es2020",
+    "sourceMap": true,
+    "noEmitOnError": true,
+    "noErrorTruncation": true,
+    "isolatedModules": false,
+    "module": "esnext",
+    "strict": true,
+    "declaration": true,
+    "declarationMap": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "types": ["node", "jest"]
+  },
+  "include": ["src/**/*", "global.d.ts"],
+  "exclude": ["node_modules", "dist"]
+}

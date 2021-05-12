@@ -1,0 +1,6 @@
+.DS_Store
+/coverage/
+/node_modules/
+**/node_modules
+.pnpm-debug.log
+**/.pnpm-debug.log
