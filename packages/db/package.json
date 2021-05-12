@@ -1,6 +1,6 @@
 {
   "name": "@ffwd/db",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "directories": {
@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
-    "rebuild": "rm -rf dist && tsc"
+    "build": "rm -rf dist && tsc"
   },
   "dependencies": {
     "@databases/pg": "^5.0.0",

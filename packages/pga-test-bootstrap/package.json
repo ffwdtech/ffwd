@@ -1,6 +1,6 @@
 {
   "name": "@ffwd/pga-test-bootstrap",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "bin": {
     "pga-test-bootstrap": "./dist/index.js"
   },
@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
-    "rebuild": "rm -rf dist && tsc"
+    "build": "rm -rf dist && tsc"
   },
   "dependencies": {
     "@ffwd/config": "workspace:*",

@@ -1,12 +1,12 @@
 {
   "name": "@ffwd/pga",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "bin": {
     "pga": "./dist/pga.js"
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
-    "rebuild": "rm -rf dist && tsc"
+    "build": "rm -rf dist && tsc"
   },
   "dependencies": {
     "@databases/pg": "^5.0.0",
