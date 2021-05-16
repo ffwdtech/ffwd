@@ -47,12 +47,10 @@ importers:
       '@databases/pg': ^5.0.0
       '@ffwd/config': workspace:*
       '@ffwd/util': workspace:*
-      pg: ^8.6.0
     dependencies:
       '@databases/pg': 5.0.0
       '@ffwd/config': link:../config
       '@ffwd/util': link:../util
-      pg: 8.6.0
 
   packages/db-util:
     specifiers:

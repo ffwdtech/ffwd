@@ -1,5 +1,6 @@
 export declare function createCmd(tables: string[], cmdObj: {
     all: boolean;
+    ignoreExistingTables: boolean;
 }): Promise<void>;
 export declare function seedCmd(tables: string[], cmdObj: {
     all: boolean;

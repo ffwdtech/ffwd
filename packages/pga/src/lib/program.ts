@@ -1,7 +1,7 @@
-import * as packagejson from '../../package.json';
+const pkg = require('../../package.json');
 
 import { program } from 'commander';
 
-program.version(packagejson.version);
+program.version(pkg.version);
 
 export { program };

@@ -7,7 +7,10 @@ import {
   seedTables,
 } from '@ffwd/db-util';
 
-export async function createCmd(tables: string[], cmdObj: { all: boolean }) {
+export async function createCmd(
+  tables: string[],
+  cmdObj: { all: boolean; ignoreExistingTables: boolean },
+) {
   const dirs = getAllDirectories();
   await createTables(dirs.schemas, tables, cmdObj);
   process.exit(0);

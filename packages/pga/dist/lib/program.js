@@ -1,4 +1,5 @@
+const pkg = require('../../package.json');
 import { program } from 'commander';
-program.version('1.0.4');
+program.version(pkg.version);
 export { program };
 //# sourceMappingURL=program.js.map

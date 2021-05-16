@@ -1,4 +1,4 @@
-require('dotenv').config();
+import { FILE_NAME } from '@ffwd/config';
 import { dropCmd } from './commands/drop';
 import { initCmd } from './commands/init';
 import { listCmd } from './commands/list';
@@ -8,7 +8,7 @@ import { rmCmd } from './commands/rm';
 import { createCmd, extCmd, relCmd, seedCmd } from './commands/common';
 program
     .command('init [folder]')
-    .description('Initialise a new project- creates the database skeleton folders, tests bootstrap folder and pga.json. Pass an optional folder to skip prompting it.')
+    .description(`Initialise a new project- creates the database skeleton folders, tests bootstrap folder and ${FILE_NAME}. Pass an optional folder to skip prompting it.`)
     .action(initCmd);
 program
     .command('list')
