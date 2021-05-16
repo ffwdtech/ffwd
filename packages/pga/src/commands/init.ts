@@ -1,4 +1,4 @@
-import { FILE_NAME } from '../../../config/dist';
+import { FILE_NAME } from '@ffwd/config';
 import { createMigrationTable } from '../lib/createMigrationTable';
 import path from 'path';
 import readlineSync from 'readline-sync';
