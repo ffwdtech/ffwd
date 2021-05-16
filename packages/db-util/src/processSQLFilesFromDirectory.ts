@@ -37,9 +37,9 @@ export async function processSQLFilesFromDirectory(
     for (const name of fileNames) {
       const tableExists = await checkIfTableExists(name);
       if (!tableExists) {
-        console.error(`Table ${name} exists already`);
-      } else {
         filesToProcess.push(name);
+      } else {
+        console.error(`Table ${name} exists already`);
       }
     }
   }

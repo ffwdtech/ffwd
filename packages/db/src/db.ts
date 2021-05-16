@@ -23,12 +23,6 @@ export async function checkIfTableExists(table: string): Promise<boolean> {
   const rows = await db.query(
     sql.__dangerous__rawValue(`SELECT to_regclass('${table}')`),
   );
-  console.error(
-    'checkIfTableExists',
-    table,
-    rows,
-    rows[0].to_regclass !== null,
-  );
   return rows[0].to_regclass !== null;
 }
 

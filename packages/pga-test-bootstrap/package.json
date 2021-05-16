@@ -1,6 +1,6 @@
 {
   "name": "@ffwd/pga-test-bootstrap",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "bin": {
     "pga-test-bootstrap": "./dist/index.js"
   },
