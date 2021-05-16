@@ -1,5 +1,7 @@
+import * as packagejson from '../../package.json';
+
 import { program } from 'commander';
 
-program.version('1.0.5');
+program.version(packagejson.version);
 
 export { program };
