@@ -13,7 +13,7 @@ export const runCommandsFromDirectory = async function (
   type: string,
   directory: string,
   items: string[],
-  opts: { all: boolean },
+  opts: { all: boolean; ignoreExistingTables: boolean },
 ) {
   if (opts && opts.all) {
     console.log(`Creating all ${type} from ${directory}..`);
@@ -29,7 +29,9 @@ export const runCommandsFromDirectory = async function (
 
   return await processSQLFilesFromDirectory(directory, {
     specificItems: items || [],
-    ignoreExistingTables: true,
+    ignoreExistingTables: opts.ignoreExistingTables
+      ? opts.ignoreExistingTables
+      : false,
   });
 };
 
@@ -46,12 +48,10 @@ export async function createRelations(
   items: string[],
   opts: { all: boolean },
 ) {
-  return await runCommandsFromDirectory(
-    'table relations',
-    directory,
-    items,
-    opts,
-  );
+  return await runCommandsFromDirectory('table relations', directory, items, {
+    all: opts.all,
+    ignoreExistingTables: false,
+  });
 }
 
 /**
@@ -67,7 +67,10 @@ export async function seedTables(
   items: string[],
   opts: { all: boolean },
 ) {
-  return await runCommandsFromDirectory('table seeds', directory, items, opts);
+  return await runCommandsFromDirectory('table seeds', directory, items, {
+    all: opts.all,
+    ignoreExistingTables: false,
+  });
 }
 
 /**
@@ -81,14 +84,12 @@ export async function seedTables(
 export async function createTables(
   directory: string,
   items: string[],
-  opts: { all: boolean },
+  opts: { all: boolean; ignoreExistingTables: boolean },
 ) {
-  return await runCommandsFromDirectory(
-    'table schemas',
-    directory,
-    items,
-    opts,
-  );
+  return await runCommandsFromDirectory('table schemas', directory, items, {
+    all: opts.all,
+    ignoreExistingTables: opts.ignoreExistingTables,
+  });
 }
 
 /**
@@ -104,5 +105,8 @@ export async function createExtensions(
   items: string[],
   opts: { all: boolean },
 ) {
-  return await runCommandsFromDirectory('extensions', directory, items, opts);
+  return await runCommandsFromDirectory('extensions', directory, items, {
+    all: opts.all,
+    ignoreExistingTables: false,
+  });
 }

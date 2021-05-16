@@ -1,4 +1,3 @@
-require('dotenv').config();
 import { getAllDirectories } from '@ffwd/config';
 import { createExtensions, createRelations, createTables, runCommandsFromDirectory, seedTables, } from '@ffwd/db-util';
 /**
