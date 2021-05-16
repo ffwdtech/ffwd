@@ -11,7 +11,8 @@ const query = db.query;
  */
 export async function checkIfTableExists(table) {
     const rows = await db.query(sql.__dangerous__rawValue(`SELECT to_regclass('${table}')`));
-    return rows[0].to_regclass === table;
+    console.error('checkIfTableExists', table, rows, rows[0].to_regclass !== null);
+    return rows[0].to_regclass !== null;
 }
 export { db, sql, query };
 //# sourceMappingURL=db.js.map
