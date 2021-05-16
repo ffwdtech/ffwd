@@ -6,16 +6,25 @@ import { createExtensions, createRelations, createTables, runCommandsFromDirecto
  */
 async function setupDatabase() {
     const dirs = getAllDirectories();
+    console.log('--------------------------------------------------------------');
     console.log('Creating extensions..');
     await createExtensions(dirs.extensions, [], { all: true });
+    console.log('--------------------------------------------------------------');
     console.log('Creating from schemas..');
-    await createTables(dirs.schemas, [], { all: true });
+    await createTables(dirs.schemas, [], {
+        all: true,
+        ignoreExistingTables: true,
+    });
+    console.log('--------------------------------------------------------------');
     console.log('Creating table relations..');
     await createRelations(dirs.relations, [], { all: true });
+    console.log('--------------------------------------------------------------');
     console.log('Migrating..');
     await runCommandsFromDirectory('migrations', dirs.migrations, [], {
         all: true,
+        ignoreExistingTables: false,
     });
+    console.log('--------------------------------------------------------------');
     console.log('Seeding..');
     await seedTables(dirs.seeds, [], { all: true });
     return;

@@ -21,7 +21,9 @@ export const runCommandsFromDirectory = async function (type, directory, items, 
     }
     return await processSQLFilesFromDirectory(directory, {
         specificItems: items || [],
-        ignoreExistingTables: true,
+        ignoreExistingTables: opts.ignoreExistingTables
+            ? opts.ignoreExistingTables
+            : false,
     });
 };
 /**
@@ -33,7 +35,10 @@ export const runCommandsFromDirectory = async function (type, directory, items, 
  * @returns {boolean}
  */
 export async function createRelations(directory, items, opts) {
-    return await runCommandsFromDirectory('table relations', directory, items, opts);
+    return await runCommandsFromDirectory('table relations', directory, items, {
+        all: opts.all,
+        ignoreExistingTables: false,
+    });
 }
 /**
  * Creates table seeds from the passed seeds directory.
@@ -44,7 +49,10 @@ export async function createRelations(directory, items, opts) {
  * @returns {boolean}
  */
 export async function seedTables(directory, items, opts) {
-    return await runCommandsFromDirectory('table seeds', directory, items, opts);
+    return await runCommandsFromDirectory('table seeds', directory, items, {
+        all: opts.all,
+        ignoreExistingTables: false,
+    });
 }
 /**
  * Creates tables from the passed schemas directory.
@@ -55,7 +63,10 @@ export async function seedTables(directory, items, opts) {
  * @returns {boolean}
  */
 export async function createTables(directory, items, opts) {
-    return await runCommandsFromDirectory('table schemas', directory, items, opts);
+    return await runCommandsFromDirectory('table schemas', directory, items, {
+        all: opts.all,
+        ignoreExistingTables: opts.ignoreExistingTables,
+    });
 }
 /**
  * Creates extensions from the passed extensions directory.
@@ -66,6 +77,9 @@ export async function createTables(directory, items, opts) {
  * @returns {boolean}
  */
 export async function createExtensions(directory, items, opts) {
-    return await runCommandsFromDirectory('extensions', directory, items, opts);
+    return await runCommandsFromDirectory('extensions', directory, items, {
+        all: opts.all,
+        ignoreExistingTables: false,
+    });
 }
 //# sourceMappingURL=common.js.map

@@ -9,6 +9,7 @@
  */
 export declare const runCommandsFromDirectory: (type: string, directory: string, items: string[], opts: {
     all: boolean;
+    ignoreExistingTables: boolean;
 }) => Promise<boolean>;
 /**
  * Creates table relations from the passed relations directory.
@@ -42,6 +43,7 @@ export declare function seedTables(directory: string, items: string[], opts: {
  */
 export declare function createTables(directory: string, items: string[], opts: {
     all: boolean;
+    ignoreExistingTables: boolean;
 }): Promise<boolean>;
 /**
  * Creates extensions from the passed extensions directory.
