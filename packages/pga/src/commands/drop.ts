@@ -6,7 +6,7 @@ export async function dropCmd(tables: string[]) {
   console.log('Dropping tables:', tables);
 
   await asyncForEach(tables, async (table) => {
-    const sqlQuery = sql`DROP TABLE ${table} CASCADE`;
+    const sqlQuery = sql.__dangerous__rawValue(`DROP TABLE ${table} CASCADE`);
     console.log(sqlQuery);
     await db.query(sqlQuery);
     console.log('Done!');
