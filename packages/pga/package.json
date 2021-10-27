@@ -1,6 +1,6 @@
 {
   "name": "@ffwd/pga",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "bin": {
     "pga": "./dist/pga.js"
   },
