@@ -1,6 +1,6 @@
 {
   "name": "@ffwd/config",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "directories": {
@@ -12,7 +12,7 @@
     "build": "rm -rf dist && tsc"
   },
   "dependencies": {
-    "find-up": "^5.0.0"
+    "find-up": "^6.2.0"
   },
   "devDependencies": {
   }
