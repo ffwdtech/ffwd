@@ -39,8 +39,9 @@ export async function processSQLFilesFromDirectory(directory, { specificItems, i
     }
     log('Files to process: ', filesToProcess.join(','));
     for (const name of filesToProcess) {
-        log(`File: ${name}`);
-        const fileContents = sql.file(files.find((f) => f.name === name).path);
+        const file = files.find((f) => f.name === name);
+        log(`File: ${name} - Path: ${file.path}`);
+        const fileContents = sql.file(file.path);
         log(fileContents);
         await db.query(fileContents);
     }
