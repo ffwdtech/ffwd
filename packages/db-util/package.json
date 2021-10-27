@@ -1,6 +1,6 @@
 {
   "name": "@ffwd/db-util",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "directories": {
@@ -13,6 +13,6 @@
   "dependencies": {
     "@ffwd/db": "workspace:*",
     "@ffwd/util": "workspace:*",
-    "find-up": "^6.2.0"
+    "find-up": "^5.0.0"
   }
 }
