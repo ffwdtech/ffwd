@@ -7,24 +7,31 @@ import { processSQLFilesFromDirectory } from './processSQLFilesFromDirectory';
  * @param {string[]} items - Optional items to ONLY run
  * @param {object} opts - Options
  * @param {boolean} opts.all - Creates all items in directory
+ * @param {boolean} opts.ignoreExistingTables - Ignore processing files relating to tables that already exist
+ * @param {boolean} opts.debug - Enable debugging info
  * @returns {boolean}
  */
 export const runCommandsFromDirectory = async function (
   type: string,
   directory: string,
   items: string[],
-  opts: { all: boolean; ignoreExistingTables: boolean },
+  opts: { all: boolean; ignoreExistingTables: boolean; debug?: boolean },
 ) {
+  // This is for running tests - need to use .error to show logging output in pg-test..
+  let log: any;
+  if (opts.debug) log = console.error;
+  else log = console.log;
+
   if (opts && opts.all) {
-    console.log(`Creating all ${type} from ${directory}..`);
+    log(`Creating all ${type} from ${directory}..`);
   } else {
     if (!items.length) {
-      console.log(
+      log(
         `Pass either a list of ${type} separated by spaces or --all to create everything defined in the ${type} folder.`,
       );
       return false;
     }
-    console.log(`Creating ${type} ${items.join(',')} from ${directory}..`);
+    log(`Creating ${type} ${items.join(',')} from ${directory}..`);
   }
 
   return await processSQLFilesFromDirectory(directory, {
@@ -32,6 +39,7 @@ export const runCommandsFromDirectory = async function (
     ignoreExistingTables: opts.ignoreExistingTables
       ? opts.ignoreExistingTables
       : false,
+    debug: opts.debug,
   });
 };
 
@@ -41,16 +49,18 @@ export const runCommandsFromDirectory = async function (
  * @param {string[]} items - Optional table relations to ONLY create
  * @param {object} opts - Options
  * @param {boolean} opts.all - Create all table relations
+ * @param {boolean} opts.debug - Enable debugging info
  * @returns {boolean}
  */
 export async function createRelations(
   directory: string,
   items: string[],
-  opts: { all: boolean },
+  opts: { all: boolean; debug?: boolean },
 ) {
-  return await runCommandsFromDirectory('table relations', directory, items, {
+  return await runCommandsFromDirectory('relations', directory, items, {
     all: opts.all,
     ignoreExistingTables: false,
+    debug: opts.debug,
   });
 }
 
@@ -65,11 +75,12 @@ export async function createRelations(
 export async function seedTables(
   directory: string,
   items: string[],
-  opts: { all: boolean },
+  opts: { all: boolean; debug?: boolean },
 ) {
-  return await runCommandsFromDirectory('table seeds', directory, items, {
+  return await runCommandsFromDirectory('seeds', directory, items, {
     all: opts.all,
     ignoreExistingTables: false,
+    debug: opts.debug,
   });
 }
 
@@ -79,16 +90,18 @@ export async function seedTables(
  * @param {string[]} items - Optional tables to ONLY seed
  * @param {object} opts - Options
  * @param {boolean} opts.all - Create all tables
+ * @param {boolean} opts.debug - Enable debugging info
  * @returns {boolean}
  */
 export async function createTables(
   directory: string,
   items: string[],
-  opts: { all: boolean; ignoreExistingTables: boolean },
+  opts: { all: boolean; ignoreExistingTables: boolean; debug?: true },
 ) {
-  return await runCommandsFromDirectory('table schemas', directory, items, {
+  return await runCommandsFromDirectory('schemas', directory, items, {
     all: opts.all,
     ignoreExistingTables: opts.ignoreExistingTables,
+    debug: opts.debug,
   });
 }
 
@@ -98,15 +111,17 @@ export async function createTables(
  * @param {string[]} items - Optional extensions to ONLY create
  * @param {object} opts - Options
  * @param {boolean} opts.all - Create all extensions
+ * @param {boolean} opts.debug - Enable debugging info
  * @returns {boolean}
  */
 export async function createExtensions(
   directory: string,
   items: string[],
-  opts: { all: boolean },
+  opts: { all: boolean; debug?: boolean },
 ) {
   return await runCommandsFromDirectory('extensions', directory, items, {
     all: opts.all,
     ignoreExistingTables: false,
+    debug: opts.debug,
   });
 }

@@ -8,21 +8,22 @@ async function setupDatabase() {
     const dirs = getAllDirectories();
     console.error('Directories:', dirs);
     console.error('Creating extensions..');
-    await createExtensions(dirs.extensions, [], { all: true });
+    await createExtensions(dirs.extensions, [], { all: true, debug: true });
     console.error('Creating from schemas..');
     await createTables(dirs.schemas, [], {
         all: true,
         ignoreExistingTables: true,
     });
     console.error('Creating table relations..');
-    await createRelations(dirs.relations, [], { all: true });
+    await createRelations(dirs.relations, [], { all: true, debug: true });
     console.error('Migrating..');
     await runCommandsFromDirectory('migrations', dirs.migrations, [], {
         all: true,
         ignoreExistingTables: false,
+        debug: true,
     });
     console.log('Seeding..');
-    await seedTables(dirs.seeds, [], { all: true });
+    await seedTables(dirs.seeds, [], { all: true, debug: true });
     return;
 }
 (async () => {

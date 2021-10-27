@@ -8,7 +8,13 @@ import { checkIfTableExists, db, sql } from '@ffwd/db';
  * @param {boolean} options.ignoreExistingTables - Ignores existing tables (use when creating tables).
  * @returns {boolean} True if successful
  */
-export async function processSQLFilesFromDirectory(directory, { specificItems, ignoreExistingTables, }) {
+export async function processSQLFilesFromDirectory(directory, { specificItems, ignoreExistingTables, debug, }) {
+    // This is for running tests - need to use .error to show logging output in pg-test..
+    let log;
+    if (debug)
+        log = console.error;
+    else
+        log = console.log;
     const files = await readFiles(directory, '.sql');
     let fileNames = files.map((a) => a.name);
     if (specificItems && specificItems.length) {
@@ -31,9 +37,12 @@ export async function processSQLFilesFromDirectory(directory, { specificItems, i
         console.error('No files to process');
         return false;
     }
-    console.log('Files to process: ', filesToProcess.join(','));
+    log('Files to process: ', filesToProcess.join(','));
     for (const name of filesToProcess) {
-        await db.query(sql.file(files.find((f) => f.name === name).path));
+        log(`File: ${name}`);
+        const fileContents = sql.file(files.find((f) => f.name === name).path);
+        log(fileContents);
+        await db.query(fileContents);
     }
     return true;
 }

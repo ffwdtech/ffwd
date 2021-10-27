@@ -6,8 +6,9 @@
  * @param {boolean} options.ignoreExistingTables - Ignores existing tables (use when creating tables).
  * @returns {boolean} True if successful
  */
-export declare function processSQLFilesFromDirectory(directory: string, { specificItems, ignoreExistingTables, }: {
+export declare function processSQLFilesFromDirectory(directory: string, { specificItems, ignoreExistingTables, debug, }: {
     specificItems?: string[];
     ignoreExistingTables?: boolean;
+    debug?: boolean;
 }): Promise<boolean>;
 //# sourceMappingURL=processSQLFilesFromDirectory.d.ts.map

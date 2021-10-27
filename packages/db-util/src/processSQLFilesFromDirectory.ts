@@ -15,11 +15,18 @@ export async function processSQLFilesFromDirectory(
   {
     specificItems,
     ignoreExistingTables,
+    debug,
   }: {
     specificItems?: string[];
     ignoreExistingTables?: boolean;
+    debug?: boolean;
   },
 ) {
+  // This is for running tests - need to use .error to show logging output in pg-test..
+  let log: any;
+  if (debug) log = console.error;
+  else log = console.log;
+
   const files = await readFiles(directory, '.sql');
   let fileNames = files.map((a: any) => a.name);
 
@@ -48,10 +55,13 @@ export async function processSQLFilesFromDirectory(
     console.error('No files to process');
     return false;
   }
-  console.log('Files to process: ', filesToProcess.join(','));
+  log('Files to process: ', filesToProcess.join(','));
 
   for (const name of filesToProcess) {
-    await db.query(sql.file(files.find((f: any) => f.name === name).path));
+    log(`File: ${name}`);
+    const fileContents = sql.file(files.find((f: any) => f.name === name).path);
+    log(fileContents);
+    await db.query(fileContents);
   }
 
   return true;
